@@ -5,7 +5,7 @@ const Header = () => {
 		<header className="App-header">
 			<p>
 				<code>
-					<a
+        <a
 						className="App-link"
 						href="https://www.linkedin.com/in/ghdiep/"
 						target="_blank"
@@ -13,6 +13,7 @@ const Header = () => {
 					>
 						LinkedIn
 					</a>
+          <a href="/triforce">Triforce</a>
 				</code>
 			</p>
 		</header>
