@@ -14,6 +14,7 @@ const Header = () => {
 						LinkedIn
 					</a>
           <a href="/triforce">Triforce</a>
+          <a href="/moco-liquor-license">MoCo Liquor License (old data)</a>
 				</code>
 			</p>
 		</header>
