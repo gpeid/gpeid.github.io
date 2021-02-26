@@ -1,20 +1,12 @@
 import React from 'react';
+import styles from './Header.module.css';
 
 const Header = () => {
 	return (
-		<header className="App-header">
+		<header className={styles.headerDark}>
 			<p>
 				<code>
-        <a
-						className="App-link"
-						href="https://www.linkedin.com/in/ghdiep/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						LinkedIn
-					</a>
-          <a href="/triforce">Triforce</a>
-          <a href="/moco-liquor-license">MoCo Liquor License (old data)</a>
+          hey
 				</code>
 			</p>
 		</header>
