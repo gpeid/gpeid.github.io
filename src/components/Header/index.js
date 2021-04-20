@@ -5,9 +5,7 @@ const Header = () => {
 	return (
 		<header className={styles.headerDark}>
 			<p>
-				<code>
-          hey
-				</code>
+				George Diep | software developer - javascript developer - ui developer
 			</p>
 		</header>
 	);
