@@ -23,6 +23,10 @@ function App() {
 					<a href="/triforce">Triforce</a>
 				</code>
 				<hr />
+								<code>
+					<a href="/bee-recipes">Bee Recipes</a>
+				</code>
+				<hr />
 				<code>
 					<a href="/resume">Resume</a>
 				</code>
