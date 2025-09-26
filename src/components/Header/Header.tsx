@@ -1,11 +1,13 @@
+import useContants from '../../hooks/useConstants';
 import styles from './Header.module.css';
 
 const Header = () => {
+	const { siteName } = useContants();
 	return (
 		<header className={styles.headerDark}>
-			<p>
-				George Diep | software developer - javascript developer - ui developer
-			</p>
+			<h1 className="text-4xl">
+				{siteName}
+			</h1>
 		</header>
 	);
 };
