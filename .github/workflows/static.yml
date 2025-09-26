@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VITE_SITE_NAME: ${{ var.VITE_SITE_NAME }}
+  VITE_SITE_NAME: ${{ vars.VITE_SITE_NAME }}
 
 jobs:
   # Single deploy job since we're just deploying
