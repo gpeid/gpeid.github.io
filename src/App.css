@@ -1,10 +1,50 @@
+@reference "tailwindcss";
+
+@property --mainColor1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #04009d;
+}
+@property --mainColor2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #06004d;
+}
+
 @layer base {
   body {
     /* background-color: #111724; */
-    background: linear-gradient(135deg, #04009d 0%, #06004d 100%);
+    background: linear-gradient(
+      135deg,
+      var(--mainColor1) 0%,
+      var(--mainColor2) 100%
+    );
     color: #ccc;
     font-family: "Myriad Pro", sans-serif;
   }
+}
+
+.block-bg-gradient {
+  background: linear-gradient(135deg, #04009d 0%, #06004d 100%);
+  @apply rounded-lg;
+  @apply border-3;
+  @apply border-gray-200;
+}
+
+.secondary-block {
+  @apply sm:absolute;
+  @apply sm:right-1/12;
+  @apply sm:w-3/8;
+  @apply sm:text-xl;
+  @apply md:text-2xl;
+  @apply lg:text-3xl;
+  @apply font-light;
+}
+
+.navigation-block {
+}
+
+.summary-block {
 }
 
 @property --color1 {
@@ -23,7 +63,7 @@
   /* --color1: rgba(0, 0, 0, 0.75);
   --color2: rgba(0, 0, 0, 0); */
   background: linear-gradient(to right, var(--color1), var(--color2));
-  /* transition: --color1 0.3s ease, --color2 0.3s ease; */
+  transition: color 250ms ease;
 }
 
 @keyframes colorchange {
@@ -41,7 +81,8 @@
 .portfolio-link a:focus,
 .portfolio-link a:hover,
 .portfolio-link a:active {
-  color: #b1e0e8;
+  color: #00ced1;
+  /* #00CED1 */
   animation: colorchange 1s ease-in-out infinite;
 }
 
@@ -60,3 +101,59 @@
 .portfolio-link a {
   cursor: pointer;
 }
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.animate-border {
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+}
+
+.animate-border::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #399953;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background: linear-gradient(#ff00c8, #00fff7, #ff00c850, #00fff750);
+  animation: rotate 14s linear infinite;
+}
+.animate-border::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: linear-gradient(
+    270deg,
+    var(--mainColor1),
+    var(--mainColor2),
+    var(--mainColor1),
+    var(--mainColor2)
+  );
+
+  border-radius: 5px;
+}
+/* 
+
+@keyframes opacityChange {
+	50% {
+		opacity:1;
+	}
+	100% {
+		opacity: .5;
+	}
+} */
