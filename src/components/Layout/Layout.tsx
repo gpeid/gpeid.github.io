@@ -1,10 +1,10 @@
 
 import type { ReactNode } from "react";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-	return <div className="container mx-auto px-8">
+	return <div className="container sm:h-screen mx-auto px-8 pt-8">
 		<Header />
 		{children}
 		<Footer />
