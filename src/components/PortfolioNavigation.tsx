@@ -1,8 +1,10 @@
-import useContants from "../hooks/useConstants";
+import useAppContext from "../context/useAppContext";
 
 const PortfolioNavigation = () => {
-    const { profileLinks, portfolioLinks } = useContants();
-    return <div className="block-bg-gradient secondary-block top-1/12">
+    // const { profileLinks, portfolioLinks } = useContants();
+    const { portfolioLinks, profileLinks, setFocusedMenuItem } = useAppContext();
+    const value = useAppContext();
+    return <div className="block-bg-gradient secondary-block portfolio-links-block">
         <ul>
             {[...profileLinks, ...portfolioLinks].map((link) => (
                 <li className="portfolio-link mb-0.5 max-w-md" key={link.name}>
@@ -11,6 +13,17 @@ const PortfolioNavigation = () => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onFocus={() => {
+                            if (setFocusedMenuItem) {
+                                setFocusedMenuItem(link);
+                            }
+                        }}
+                        onMouseOver={() => {
+                            if (setFocusedMenuItem) {
+                                setFocusedMenuItem(link);
+                                console.log(value)
+                            }
+                        }}
                     >
                         {link.name}
                     </a>
