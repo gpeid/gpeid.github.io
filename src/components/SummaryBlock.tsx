@@ -1,5 +1,5 @@
 const SummaryBlock = () => {
-    return <div className="block-bg-gradient sm:w-6/7 h-[88vh] p-6">
+    return <div className="summary-block block-bg-gradient">
         <h2 className="font-bold text-3xl">George H. Diep</h2>
         <hr className="my-4" />
         <p>Full Stack developer</p>

@@ -13,7 +13,7 @@ const UtilityInfoBlock = () => {
     const time = formatTime(now);
 
     return (
-        <div className="block-bg-gradient secondary-block bottom-[15%] p-6 sm:p-3 flex justify-between">
+        <div className="block-bg-gradient secondary-block utility-info-block flex justify-between">
             <span>Time:</span><span>{time}</span>
         </div>
     );

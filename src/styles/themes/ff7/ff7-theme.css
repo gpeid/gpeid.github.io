@@ -1,0 +1,108 @@
+@property --mainColor1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #04009d;
+}
+@property --mainColor2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #06004d;
+}
+
+@layer base {
+  body.ff7-theme {
+    /* background-color: #111724; */
+    background: linear-gradient(
+      135deg,
+      var(--mainColor1) 0%,
+      var(--mainColor2) 100%
+    );
+    color: #ccc;
+    font-family: "Myriad Pro", sans-serif;
+  }
+}
+.ff7-theme {
+  .menus-block {
+  }
+  .block-bg-gradient {
+    background: linear-gradient(135deg, #04009d 0%, #06004d 100%);
+    @apply rounded-lg;
+    @apply border-3;
+    @apply border-gray-200;
+  }
+
+  .secondary-block {
+    @apply sm:absolute;
+    @apply sm:right-1/12;
+    @apply sm:w-3/8;
+    @apply sm:text-xl;
+    @apply md:text-2xl;
+    @apply lg:text-3xl;
+    @apply font-light;
+  }
+  .summary-block {
+    @apply h-[88vh];
+    @apply w-6/7;
+  }
+  .portfolio-links-block {
+    @apply top-1/12;
+    @apply p-6;
+    @apply mb-6;
+  }
+  .utility-info-block {
+    @apply p-6;
+    @apply sm:p-3;
+    @apply bottom-[15%];
+  }
+
+  @property --color1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgba(0, 0, 0, 0.75);
+  }
+
+  @property --color2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgba(0, 0, 0, 0);
+  }
+
+  .portfolio-link a {
+    /* --color1: rgba(0, 0, 0, 0.75);
+  --color2: rgba(0, 0, 0, 0); */
+    background: linear-gradient(to right, var(--color1), var(--color2));
+    transition: color 250ms ease;
+  }
+
+  @keyframes colorchange {
+    0% {
+      --color1: rgba(0, 0, 0, 0.75);
+    }
+    50% {
+      --color1: rgba(150, 150, 150, 0.75);
+    }
+    100% {
+      --color1: rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  .portfolio-link a:focus,
+  .portfolio-link a:hover,
+  .portfolio-link a:active {
+    color: #00ced1;
+    /* #00CED1 */
+    animation: colorchange 1s ease-in-out infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
