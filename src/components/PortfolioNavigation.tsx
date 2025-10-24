@@ -13,14 +13,10 @@ const PortfolioNavigation = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onFocus={() => {
-                            if (setFocusedMenuItem) {
-                                setFocusedMenuItem(link);
-                            }
+                            setFocusedMenuItem?.({ id: link.name, label: link.name, description: link.description });
                         }}
                         onMouseOver={() => {
-                            if (setFocusedMenuItem) {
-                                setFocusedMenuItem(link);
-                            }
+                            setFocusedMenuItem?.({ id: link.name, label: link.name, description: link.description });
                         }}
                     >
                         <div className="selection-cursor"></div>

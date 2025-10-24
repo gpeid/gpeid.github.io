@@ -5,6 +5,14 @@ export type Theme = 'ff7-theme' | 'ff8-theme' | 'default-theme';
 
 export type Layout = 'wide' | 'boxed';
 
+export type MenuItem = {
+	id?: string;
+	label?: string;
+	description?: string;
+	// allow extra metadata when needed
+	[key: string]: unknown;
+};
+
 export type AppContextType = {
 	theme: Theme;
 	toggleTheme: () => void;
@@ -13,10 +21,10 @@ export type AppContextType = {
 	layout: Layout;
 	setLayout: (l: Layout) => void;
 	siteName: string;
-	profileLinks: { name: string; url: string }[];
-	portfolioLinks: { name: string; url: string }[];
-	setFocusedMenuItem: (item: object | undefined) => void;
-	focusedMenuItem: object | undefined;
+	profileLinks: { name: string; url: string, description: string }[];
+	portfolioLinks: { name: string; url: string, description: string }[];
+	setFocusedMenuItem: (item: MenuItem | undefined) => void;
+	focusedMenuItem: MenuItem | undefined;
 };
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -63,9 +71,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 		else body.classList.remove('ff8-theme');
 	}, [theme]);
 
-	const [focusedMenuItem, setFocusedMenuItemState] = useState<object | undefined>(undefined);
+	const [focusedMenuItem, setFocusedMenuItemState] = useState<MenuItem | undefined>(undefined);
 
-	const setFocusedMenuItem = useCallback((item: object | undefined) => {
+	const setFocusedMenuItem = useCallback((item: MenuItem | undefined) => {
 		// store the focused menu item in state so consumers can read it
 		setFocusedMenuItemState(item);
 	}, []);
