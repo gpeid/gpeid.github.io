@@ -1,16 +1,12 @@
 @reference "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "./themes/ff7/ff7-theme.css";
 @import "./themes/ff8/ff8-theme.css";
 
-
 input[type="radio"],
 label[for] {
-  @apply cursor-pointer
-}
-
-.portfolio-link a {
-  cursor: pointer;
+  @apply cursor-pointer;
 }
 
 @keyframes rotate {

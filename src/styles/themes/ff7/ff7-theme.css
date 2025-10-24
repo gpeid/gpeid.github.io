@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "reactor7";
+  src: url("./../../../assets/fonts/reactor7/Reactor7.woff") format("woff"),
+    url("./../../../assets/fonts/reactor7/Reactor7.ttf") format("truetype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.otf") format("opentype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.svg#Reactor7") format("svg"),
+    url("./../../../assets/fonts/reactor7/Reactor7.eot")
+      format("embedded-opentype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @property --mainColor1 {
   syntax: "<color>";
   inherits: false;
@@ -11,6 +25,7 @@
 
 @layer base {
   body.ff7-theme {
+    height: 100vh;
     /* background-color: #111724; */
     background: linear-gradient(
       135deg,
@@ -18,11 +33,52 @@
       var(--mainColor2) 100%
     );
     color: #ccc;
-    font-family: "Myriad Pro", sans-serif;
+    font-family: "reactor7", sans-serif;
+    font-size: 100%;
   }
 }
-.ff7-theme {
-  .menus-block {
+
+@property --color1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0, 0, 0, 0.75);
+}
+
+@property --color2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0, 0, 0, 0);
+}
+
+@keyframes colorchange {
+  0% {
+    --color1: rgba(0, 0, 0, 0.75);
+  }
+  50% {
+    --color1: rgba(150, 150, 150, 0.75);
+  }
+  100% {
+    --color1: rgba(0, 0, 0, 0.75);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.App .ff7-theme {
+  @apply max-w-[1280px];
+  margin: 0 auto;
+  .pause-menu-block {
+    @apply mt-5;
   }
   .block-bg-gradient {
     background: linear-gradient(135deg, #04009d 0%, #06004d 100%);
@@ -33,38 +89,30 @@
 
   .secondary-block {
     @apply sm:absolute;
-    @apply sm:right-1/12;
-    @apply sm:w-3/8;
-    @apply sm:text-xl;
-    @apply md:text-2xl;
-    @apply lg:text-3xl;
+    @apply sm:right-0;
+    @apply sm:w-[205px];
+    @apply sm:text-[22px];
+    /* @apply md:text-3xl; */
     @apply font-light;
   }
   .summary-block {
-    @apply h-[88vh];
-    @apply w-6/7;
+    @apply sm:p-4;
+    @apply sm:max-w-3/4;
+    margin: 0 auto;
   }
   .portfolio-links-block {
-    @apply top-1/12;
-    @apply p-6;
-    @apply mb-6;
+    @apply sm:top-[-15px];
+    @apply sm:mb-6;
   }
   .utility-info-block {
-    @apply p-6;
-    @apply sm:p-3;
-    @apply bottom-[15%];
+    @apply sm:p-1;
+    @apply sm:bottom-[27px];
   }
+  .current-game-location-block {
+    @apply p-4;
+    @apply sm:bottom-[-44px];
+    @apply sm:w-[395px];
 
-  @property --color1 {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: rgba(0, 0, 0, 0.75);
-  }
-
-  @property --color2 {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: rgba(0, 0, 0, 0);
   }
 
   .portfolio-link a {
@@ -72,18 +120,6 @@
   --color2: rgba(0, 0, 0, 0); */
     background: linear-gradient(to right, var(--color1), var(--color2));
     transition: color 250ms ease;
-  }
-
-  @keyframes colorchange {
-    0% {
-      --color1: rgba(0, 0, 0, 0.75);
-    }
-    50% {
-      --color1: rgba(150, 150, 150, 0.75);
-    }
-    100% {
-      --color1: rgba(0, 0, 0, 0.75);
-    }
   }
 
   .portfolio-link a:focus,
@@ -94,15 +130,26 @@
     animation: colorchange 1s ease-in-out infinite;
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  .portfolio-link a > .selection-cursor {
+    position: absolute; 
+    /* Applies 'slide-in' animation for 2s */
+    /* animation: 1s slide-in infinite; */
+  }
+
+  .portfolio-link a:hover > .selection-cursor,
+  .portfolio-link a:focus > .selection-cursor {
+    display: block;
+    /* list-style-image: url("./../../../assets/ff8-cursor.png"); */
+    /* background: url("./../../../assets/ff8-cursor.png") no-repeat -25px center; */
+    left: -30px;
+  }
+
+  .selection-cursor {
+    display: none;
+    height: 24px;
+    width: 47px;
+    position: absolute;
+    top: 40%;
+    background: url("./../../../assets/FF7Cursor.webp") no-repeat;
   }
 }
