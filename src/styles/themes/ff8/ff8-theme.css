@@ -1,0 +1,142 @@
+@font-face {
+  font-family: "SeeD Computer";
+  src: url("./../../../assets/fonts/seed-computer.otf.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@property --mainColor1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #4d4d4d;
+}
+@property --mainColor2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #d3d3d3;
+}
+
+@layer base {
+  body.ff8-theme {
+    background-color: #111724;
+    color: #ccc;
+    /* font-family: "SeeD Computer", sans-serif; */
+    font-family: "Roboto Condensed", sans-serif;
+    a {
+      /* cursor: url("./../../../assets/ff8-cursor.png"), pointer; */
+    }
+  }
+}
+.ff8-theme {
+  .pause-menu-block {
+    @apply mt-5;
+    @apply grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-auto-rows: auto;
+    gap: 8px;
+  }
+
+  .block-bg-gradient {
+    @apply border-4;
+    border: outset; /* no class for border-outset. should extend a class for outset in tailwind.config.js */
+    border-color: #848286 #282828 #282828 #848286; /* top right bottom left */
+    background: linear-gradient(
+      to right,
+      #414141,
+      #494949,
+      /* #515151, */ #595959,
+      #636164 50%,
+      #696969 75%
+    );
+  }
+  .block-title {
+    @apply text-xs;
+    @apply uppercase;
+    @apply absolute;
+    @apply top-[-5px];
+    font-family: "Orbitron", sans-serif;
+    text-shadow: -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000,
+      2px 2px 2px #000;
+  }
+  .secondary-block {
+    @apply relative;
+    @apply sm:text-lg;
+    @apply md:text-xl;
+    @apply lg:text-2xl;
+    @apply font-light;
+  }
+  .help-text-block {
+    @apply h-20;
+    @apply content-evenly;
+    @apply px-4;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column: span 4 / span 4;
+  }
+  .summary-block {
+    @apply relative;
+    @apply ml-4;
+    @apply mr-2;
+    @apply p-2;
+    @apply h-max;
+    grid-column: span 4 / span 4;
+    grid-row: span 5 / span 5;
+    grid-row-start: 2;
+  }
+  .portfolio-links-block {
+    @apply z-10;
+    grid-row: span 4 / span 4;
+    grid-column-start: 5;
+    grid-row-start: 1;
+  }
+  .utility-info-block {
+    @apply px-4;
+    grid-column-start: 5;
+    grid-row-start: 6;
+    grid-row-end: 8;
+    grid-row-span: span 1 / span 1;
+  }
+  .current-game-location-block {
+    @apply h-20;
+    @apply content-evenly;
+    @apply px-4;
+    grid-column-start: 1;
+    grid-row-start: 7;
+    grid-column: span 4 / span 4;
+  }
+
+  .portfolio-link a > .selection-cursor {
+    position: absolute; 
+    /* Applies 'slide-in' animation for 2s */
+    /* animation: 1s slide-in infinite; */
+  }
+
+  .portfolio-link a:hover > .selection-cursor,
+  .portfolio-link a:focus > .selection-cursor {
+    display: block;
+    /* list-style-image: url("./../../../assets/ff8-cursor.png"); */
+    /* background: url("./../../../assets/ff8-cursor.png") no-repeat -25px center; */
+    left: -30px;
+  }
+
+  .selection-cursor {
+    display: none;
+    height: 24px;
+    width: 47px;
+    position: absolute;
+    top: 40%;
+    background: url("./../../../assets/ff8-cursor.png") no-repeat;
+  }
+}
+@keyframes slide-in {
+  0% {
+    left: -30px; /* Starting position */
+  }
+  50% {
+    left: -20px; /* Intermediate position */
+  }
+  100% {
+    left: -30px; /* Final position */
+  }
+}
