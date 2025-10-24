@@ -1,0 +1,155 @@
+@font-face {
+  font-family: "reactor7";
+  src: url("./../../../assets/fonts/reactor7/Reactor7.woff") format("woff"),
+    url("./../../../assets/fonts/reactor7/Reactor7.ttf") format("truetype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.otf") format("opentype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.svg#Reactor7") format("svg"),
+    url("./../../../assets/fonts/reactor7/Reactor7.eot")
+      format("embedded-opentype"),
+    url("./../../../assets/fonts/reactor7/Reactor7.eot?#iefix")
+      format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@property --mainColor1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #04009d;
+}
+@property --mainColor2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #06004d;
+}
+
+@layer base {
+  body.ff7-theme {
+    height: 100vh;
+    /* background-color: #111724; */
+    background: linear-gradient(
+      135deg,
+      var(--mainColor1) 0%,
+      var(--mainColor2) 100%
+    );
+    color: #ccc;
+    font-family: "reactor7", sans-serif;
+    font-size: 100%;
+  }
+}
+
+@property --color1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0, 0, 0, 0.75);
+}
+
+@property --color2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(0, 0, 0, 0);
+}
+
+@keyframes colorchange {
+  0% {
+    --color1: rgba(0, 0, 0, 0.75);
+  }
+  50% {
+    --color1: rgba(150, 150, 150, 0.75);
+  }
+  100% {
+    --color1: rgba(0, 0, 0, 0.75);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.App .ff7-theme {
+  @apply max-w-[1280px];
+  margin: 0 auto;
+  .pause-menu-block {
+    @apply mt-5;
+  }
+  .block-bg-gradient {
+    background: linear-gradient(135deg, #04009d 0%, #06004d 100%);
+    @apply rounded-lg;
+    @apply border-3;
+    @apply border-gray-200;
+  }
+
+  .secondary-block {
+    @apply sm:absolute;
+    @apply sm:right-0;
+    @apply sm:w-[205px];
+    @apply sm:text-[22px];
+    /* @apply md:text-3xl; */
+    @apply font-light;
+  }
+  .summary-block {
+    @apply sm:p-4;
+    @apply sm:max-w-3/4;
+    margin: 0 auto;
+  }
+  .portfolio-links-block {
+    @apply sm:top-[-15px];
+    @apply sm:mb-6;
+  }
+  .utility-info-block {
+    @apply sm:p-1;
+    @apply sm:bottom-[27px];
+  }
+  .current-game-location-block {
+    @apply p-4;
+    @apply sm:bottom-[-44px];
+    @apply sm:w-[395px];
+
+  }
+
+  .portfolio-link a {
+    /* --color1: rgba(0, 0, 0, 0.75);
+  --color2: rgba(0, 0, 0, 0); */
+    background: linear-gradient(to right, var(--color1), var(--color2));
+    transition: color 250ms ease;
+  }
+
+  .portfolio-link a:focus,
+  .portfolio-link a:hover,
+  .portfolio-link a:active {
+    color: #00ced1;
+    /* #00CED1 */
+    animation: colorchange 1s ease-in-out infinite;
+  }
+
+  .portfolio-link a > .selection-cursor {
+    position: absolute; 
+    /* Applies 'slide-in' animation for 2s */
+    /* animation: 1s slide-in infinite; */
+  }
+
+  .portfolio-link a:hover > .selection-cursor,
+  .portfolio-link a:focus > .selection-cursor {
+    display: block;
+    /* list-style-image: url("./../../../assets/ff8-cursor.png"); */
+    /* background: url("./../../../assets/ff8-cursor.png") no-repeat -25px center; */
+    left: -30px;
+  }
+
+  .selection-cursor {
+    display: none;
+    height: 24px;
+    width: 47px;
+    position: absolute;
+    top: 40%;
+    background: url("./../../../assets/FF7Cursor.webp") no-repeat;
+  }
+}

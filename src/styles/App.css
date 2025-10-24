@@ -1,0 +1,65 @@
+@reference "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "./themes/ff7/ff7-theme.css";
+@import "./themes/ff8/ff8-theme.css";
+
+input[type="radio"],
+label[for] {
+  @apply cursor-pointer;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.animate-border {
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+}
+
+.animate-border::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #399953;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background: linear-gradient(#ff00c8, #00fff7, #ff00c850, #00fff750);
+  animation: rotate 14s linear infinite;
+}
+.animate-border::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border-radius: 5px;
+  background: linear-gradient(
+    270deg,
+    var(--mainColor1),
+    var(--mainColor2),
+    var(--mainColor1),
+    var(--mainColor2)
+  );
+}
+/* 
+
+@keyframes opacityChange {
+	50% {
+		opacity:1;
+	}
+	100% {
+		opacity: .5;
+	}
+} */

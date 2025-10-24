@@ -1,17 +1,29 @@
-import useContants from "../hooks/useConstants";
+import useAppContext from "../context/useAppContext";
 
 const PortfolioNavigation = () => {
-    const { profileLinks, portfolioLinks } = useContants();
-    return <div className="block-bg-gradient secondary-block top-1/12">
+    // const { profileLinks, portfolioLinks } = useContants();
+    const { portfolioLinks, profileLinks, setFocusedMenuItem } = useAppContext();
+    return <div className="block-bg-gradient secondary-block portfolio-links-block">
         <ul>
             {[...profileLinks, ...portfolioLinks].map((link) => (
-                <li className="portfolio-link mb-0.5 max-w-md" key={link.name}>
+                <li className="max-w-md mb-0.5 portfolio-link relative" key={link.name}>
                     <a
-                        className="block py-1.5 pl-7 font-light"
+                        className="block pl-7 font-light"
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onFocus={() => {
+                            if (setFocusedMenuItem) {
+                                setFocusedMenuItem(link);
+                            }
+                        }}
+                        onMouseOver={() => {
+                            if (setFocusedMenuItem) {
+                                setFocusedMenuItem(link);
+                            }
+                        }}
                     >
+                        <div className="selection-cursor"></div>
                         {link.name}
                     </a>
                 </li>
