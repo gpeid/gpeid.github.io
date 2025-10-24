@@ -12,12 +12,12 @@ function App() {
   return (
     <div className="App">
       <Layout theme={context.theme}>
-        <div className="relative menus-block">
+        <div className="max-h-[530px] pause-menu-block relative">
           {context.theme === 'ff8-theme' && <HelperTextBlock />}
           <PortfolioNavigation />
           <SummaryBlock />
           <UtilityInfoBlock />
-          {context.theme === 'ff8-theme' && <CurrentGameLocationTextBlock />}
+          <CurrentGameLocationTextBlock />
         </div>
       </Layout>
     </div>
