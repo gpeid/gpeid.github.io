@@ -10,7 +10,6 @@ type LayoutProps = {
 };
 
 const Layout = ({ children, theme }: LayoutProps) => {
-	console.log(theme)
 	return <div className={`${theme ? theme : "default-theme"} container sm:h-screen mx-auto px-8 pt-8`} >
 		<Header />
 		{children}
