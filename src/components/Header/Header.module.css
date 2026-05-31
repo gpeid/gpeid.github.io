@@ -1,3 +1,46 @@
 .headerDark{
   /* background-color: #101724; */
 }
+
+.themeSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgb(255 255 255 / 0.6);
+  border-radius: 6px;
+}
+
+.themeOption {
+  position: relative;
+}
+
+.themeInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.themeLabel {
+  display: block;
+  min-width: 3rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.themeInput:checked + .themeLabel {
+  background: rgb(255 255 255 / 0.9);
+  color: #111724;
+}
+
+.themeInput:focus-visible + .themeLabel {
+  outline: 2px solid #00ced1;
+  outline-offset: 2px;
+}

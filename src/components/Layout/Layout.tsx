@@ -1,16 +1,17 @@
 
 import type { ReactNode } from "react";
-import type { Theme } from "../../context/AppContext";
+import useTheme from "../../context/useTheme";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 
 type LayoutProps = {
 	children: ReactNode;
-	theme: Theme;
 };
 
-const Layout = ({ children, theme }: LayoutProps) => {
-	return <div className={`${theme ? theme : "default-theme"} container sm:h-screen mx-auto px-8 pt-8`} >
+const Layout = ({ children }: LayoutProps) => {
+	const { theme } = useTheme();
+
+	return <div className={`${theme} container sm:h-screen mx-auto px-8 pt-8`} >
 		<Header />
 		{children}
 		<Footer />
